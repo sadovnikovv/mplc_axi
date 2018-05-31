@@ -7,7 +7,7 @@ namespace axi {
 		typedef boost::shared_ptr<ChannelInfo> ptr;
 		static ptr make() { return boost::make_shared<ChannelInfo>(); }
 
-		std::string AddressSPI;
+		std::string AddressGPIO;
 	};
 
 	typedef std::list<ChannelInfo::ptr> ChannelList;

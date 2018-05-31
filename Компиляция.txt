@@ -1,0 +1,59 @@
+root@baikal:/mnt/usb/files/c++# cd build/
+root@baikal:/mnt/usb/files/c++/build# cmake -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" ./../
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /mnt/usb/files/c++/build
+root@baikal:/mnt/usb/files/c++/build# cd ..
+root@baikal:/mnt/usb/files/c++# cmake --build build --target clean -- -j 1
+root@baikal:/mnt/usb/files/c++# cmake --build build --target all -- -j 1
+[ 33%] Building CXX object CMakeFiles/mplc_gpio.dir/gpio_protocol.cpp.o
+In file included from /mnt/usb/files/c++/lib/rapidjson/document.h:6:0,
+                 from /mnt/usb/files/c++/include/share/addins_share.h:40,
+                 from /mnt/usb/files/c++/include/share/mplcshare.h:45,
+                 from /mnt/usb/files/c++/include/share/base_fb.h:6,
+                 from /mnt/usb/files/c++/include/share/driver_fb.h:3,
+                 from /mnt/usb/files/c++/gpio_protocol.h:2,
+                 from /mnt/usb/files/c++/gpio_protocol.cpp:1:
+/mnt/usb/files/c++/include/share/opcua_variant_hlp.h: In member function ‘OpcUa_StatusCode OpcUa_VariantHlp::GetString(const OpcUa_Variant&, OpcUa_String&)’:
+/mnt/usb/files/c++/include/share/opcua_variant_hlp.h:1315:72: warning: ISO C++ forbids converting a string constant to ‘OpcUa_StringA {aka char*}’ [-Wwrite-strings]
+     return OpcUa_String_AttachToString(TRUE_STR, sz, sz, true, true, &v);
+                                                                        ^
+/mnt/usb/files/c++/include/share/opcua_variant_hlp.h:1320:73: warning: ISO C++ forbids converting a string constant to ‘OpcUa_StringA {aka char*}’ [-Wwrite-strings]
+     return OpcUa_String_AttachToString(FALSE_STR, sz, sz, true, true, &v);
+                                                                         ^
+[ 66%] Building CXX object CMakeFiles/mplc_gpio.dir/mplc_gpio.cpp.o
+In file included from /mnt/usb/files/c++/lib/rapidjson/document.h:6:0,
+                 from /mnt/usb/files/c++/include/share/addins_share.h:40,
+                 from /mnt/usb/files/c++/include/share/mplcshare.h:45,
+                 from /mnt/usb/files/c++/include/share/base_fb.h:6,
+                 from /mnt/usb/files/c++/include/share/driver_fb.h:3,
+                 from /mnt/usb/files/c++/gpio_protocol.h:2,
+                 from /mnt/usb/files/c++/mplc_gpio.cpp:2:
+/mnt/usb/files/c++/include/share/opcua_variant_hlp.h: In member function ‘OpcUa_StatusCode OpcUa_VariantHlp::GetString(const OpcUa_Variant&, OpcUa_String&)’:
+/mnt/usb/files/c++/include/share/opcua_variant_hlp.h:1315:72: warning: ISO C++ forbids converting a string constant to ‘OpcUa_StringA {aka char*}’ [-Wwrite-strings]
+     return OpcUa_String_AttachToString(TRUE_STR, sz, sz, true, true, &v);
+                                                                        ^
+/mnt/usb/files/c++/include/share/opcua_variant_hlp.h:1320:73: warning: ISO C++ forbids converting a string constant to ‘OpcUa_StringA {aka char*}’ [-Wwrite-strings]
+     return OpcUa_String_AttachToString(FALSE_STR, sz, sz, true, true, &v);
+                                                                         ^
+[100%] Linking CXX shared library mplc_gpio.so
+[100%] Built target mplc_gpio
+
+
+
+
+
+
+
+/////////////////
+
+
+mkdir cmake-build-release
+  cd cmake-build-release
+  cmake.exe -DCMAKE_BUILD_TYPE=Release -G "CodeBlocks - MinGW Makefiles" ./../
+  cd ..
+  cmake.exe --build cmake-build-release --target runUnitTests -- -j 1
+  cd cmake-build-release\bin
+  run =)
+  cmake.exe --build cmake-build-release --target clean -- -j 1
+  cmake.exe --build cmake-build-release --target all -- -j 1
