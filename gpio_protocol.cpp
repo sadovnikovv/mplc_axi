@@ -1,9 +1,9 @@
-#include "gpio_protocol.h"
+п»ї#include "gpio_protocol.h"
 #include <iostream>
 #include <fstream>
 namespace axi {
 
-	////Инициализация входов ФБ
+	////РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РІС…РѕРґРѕРІ Р¤Р‘
 	GpioProtocol::GpioProtocol(lua_State* L, const std::string& name) : DriverFB<GpioProtocol>(L, name) {
 
 	}
@@ -13,7 +13,7 @@ namespace axi {
 
 	void GpioProtocol::Execute() {
 		std::vector<WriteDataRec> write_list;
-		for (ChannelList::iterator it = channels.begin(); it != channels.end(); ++it) { // Запись в каналы
+		for (ChannelList::iterator it = channels.begin(); it != channels.end(); ++it) { // Р—Р°РїРёСЃСЊ РІ РєР°РЅР°Р»С‹
 			ChannelInfo::ptr& ch = *it;
 			OpcUa_VariantHlp value;
 			if(ch->Direction == DriverVarDsc::Input) {
@@ -65,7 +65,7 @@ namespace axi {
 			}
 		}
 		if (!write_list.empty()) {
-			_DataProvider->WriteValues(write_list); //Обновление данных в каналах Input
+			_DataProvider->WriteValues(write_list); //РћР±РЅРѕРІР»РµРЅРёРµ РґР°РЅРЅС‹С… РІ РєР°РЅР°Р»Р°С… Input
 		}
 	}
 	void GpioProtocol::Inited(lua_State* L) {
@@ -75,14 +75,14 @@ namespace axi {
 	void GpioProtocol::AddChannel(int64_t read_id, char const* read_path,
 								  int64_t write_id, char const* write_path, 
 		const MapStringToVariant& fields) {
-		MapStringToVariant::const_iterator name_var = fields.find("Name"); //имя канала
+		MapStringToVariant::const_iterator name_var = fields.find("Name"); //РёРјСЏ РєР°РЅР°Р»Р°
 		std::string tmp;
 		name_var->second.GetString(tmp);
-		MapStringToVariant::const_iterator nodeIdVar = fields.find("AddressGPIO");//Настройка в скаде
+		MapStringToVariant::const_iterator nodeIdVar = fields.find("AddressGPIO");//РќР°СЃС‚СЂРѕР№РєР° РІ СЃРєР°РґРµ
 		if (nodeIdVar == fields.end() || nodeIdVar->second.GetType() != OpcUaType_String)
 			return;
 		ChannelInfo::ptr ch = ChannelInfo::make();
-		nodeIdVar->second.GetString(ch->AddressGPIO); // Получение значения
+		nodeIdVar->second.GetString(ch->AddressGPIO); // РџРѕР»СѓС‡РµРЅРёРµ Р·РЅР°С‡РµРЅРёСЏ
 		ch->Id = read_id;
 		ch->Path = read_path;
 		ch->WriteId = write_id;
@@ -92,5 +92,5 @@ namespace axi {
 		channels.push_back(ch);
 	}
 
-	REGISTER_FB_IMPLWITH_NAME(GpioProtocol, "GPIO") //Регистрация ФБ
+	REGISTER_FB_IMPLWITH_NAME(GpioProtocol, "GPIO") //Р РµРіРёСЃС‚СЂР°С†РёСЏ Р¤Р‘
 }
